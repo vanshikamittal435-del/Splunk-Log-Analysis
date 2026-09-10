@@ -8,7 +8,7 @@ Move beyond raw failed-login counts to detect actual brute-force *patterns* — 
 **A — High attempt count per connection**
 Uses Zeek's own `auth_attempts` counter (attempts within a single connection):
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json"
 auth_attempts > 3 auth_success=false
 | table _time, id.orig_h, username, auth_attempts
 | sort -auth_attempts
@@ -17,7 +17,7 @@ auth_attempts > 3 auth_success=false
 **B — Time-window brute force**
 Flags source IPs with 5+ cumulative failed attempts (catches attackers cycling through multiple connections):
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | stats count as total_attempts by id.orig_h
 | where total_attempts >= 5
 | sort -total_attempts
@@ -26,7 +26,7 @@ source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed 
 **C — Brute-force-then-breach**
 The strongest signal: an IP that failed repeatedly and then succeeded.
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json"
 | stats sum(eval(auth_success=false)) as fails, sum(eval(auth_success=true)) as successes by id.orig_h
 | where fails > 3 AND successes > 0
 | sort -fails
@@ -35,7 +35,7 @@ source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json"
 **D — Password spraying check**
 One IP trying many different usernames with few attempts each (a different attack pattern than classic brute force):
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | stats dc(username) as unique_usernames, count as total_failures by id.orig_h
 | where unique_usernames > 5
 | sort -unique_usernames
@@ -63,14 +63,14 @@ A source IP with just 1-2 failed logins is usually normal user error (wrong pass
 ## Screenshots
  
 **Approach A — High attempt count per connection**
-![Approach A](./screenshots/approach-a.png)
+![Approach A](./screenshots/approach-a.jpeg)
  
 **Approach B — Time-window brute force**
-![Approach B](./screenshots/approach-b.png)
+![Approach B](./screenshots/approach-b.jpeg)
  
 **Approach C — Brute-force-then-breach**
-![Approach C](./screenshots/approach-c.png)
+![Approach C](./screenshots/approach-c.jpeg)
  
 **Approach D — Password spraying check**
-![Approach D](./screenshots/approach-d.png)
+![Approach D](./screenshots/approach-d.jpeg)
 
