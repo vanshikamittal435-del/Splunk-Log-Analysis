@@ -7,27 +7,27 @@ Identify all failed SSH authentication attempts and surface which source IPs and
  
 **Failed logins by source IP:**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | stats count by id.orig_h
 | sort -count
 ```
  
 **Failed logins by source IP and username:**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | stats count by id.orig_h, username
 | sort -count
 ```
  
 **Top 10 most-targeted usernames:**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | top limit=10 username
 ```
  
 **Failed logins over time:**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | timechart span=1h count by id.orig_h
 ```
  
