@@ -3,7 +3,7 @@
 ## Data Source
 - **File:** `ssh_logs_new.json`
 - **Format:** Zeek/Bro SSH connection logs, JSON
-- **Host:** `Mahhyya`
+- **Host:** `vanshika_4245`
 - **Sourcetype:** `_json`
 ## Steps Taken
 1. Created a dedicated index for this project: **Settings → Indexes → New Index** → named `ssh_logs` (kept separate from the default `main` index).
@@ -12,7 +12,7 @@
 4. Pointed the data to the `ssh_logs` index and completed onboarding.
 5. Verified ingestion with a base search:
 ```spl
-   source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json"
+   source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json"
 ```
 6. Expanded a raw event and confirmed the following fields were correctly extracted:
 | Field | Meaning |
