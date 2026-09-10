@@ -38,7 +38,7 @@ source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="F
 ## Screenshots
  
 **Failed logins by source IP**
-![Failed Logins by IP](./screenshots/failed-logins-by-ip.png)
+![Failed Logins by IP](./screenshots/failed-logins-by-ip.jpeg)
  
 **Top targeted usernames**
-![Top Usernames](./screenshots/top-usernames.png)
+![Top Usernames](./screenshots/top-usernames.jpeg)
