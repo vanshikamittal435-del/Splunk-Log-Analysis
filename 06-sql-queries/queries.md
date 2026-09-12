@@ -57,7 +57,7 @@ source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="F
 
 **Failed logins broken down by username too:**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | stats count by id.orig_h, username
 | sort -count
 ```
