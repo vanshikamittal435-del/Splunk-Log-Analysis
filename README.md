@@ -1,6 +1,3 @@
-# Splunk-Log-Analysis
-SIEM project detecting SSH brute-force attacks using Splunk — log ingestion, SPL detection queries, dashboards, and real-time alerts on Zeek/Bro SSH logs.
-
 # SSH Brute Force Detection using Splunk
 
 A SIEM-based detection project using **Splunk Enterprise** to identify brute-force SSH login attempts from Zeek/Bro-formatted SSH connection logs — covering data ingestion, detection logic (SPL), a monitoring dashboard, and a real-time alert.
@@ -63,14 +60,14 @@ Simulate a real-world SOC analyst workflow: ingest raw SSH authentication logs i
 
 **Failed Logins**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | stats count by id.orig_h
 | sort -count
 ```
 
 **Brute Force (time-window based)**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login"
 | bin _time span=5m
 | stats sum(auth_attempts) as total_attempts by id.orig_h, _time
 | where total_attempts >= 5
@@ -78,7 +75,7 @@ source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed 
 
 **Brute-Force-Then-Breach (strongest finding)**
 ```spl
-source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json"
+source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json"
 | stats sum(eval(auth_success=false)) as fails, sum(eval(auth_success=true)) as successes by id.orig_h
 | where fails > 3 AND successes > 0
 ```
@@ -87,14 +84,6 @@ Full query set with explanations: [`07-spl-queries/queries.md`](./07-spl-queries
 
 ---
 
-## 🚨 Alert
-Configured a scheduled alert on the brute-force detection query (5-min interval, triggers when `total_attempts >= 5` for any source IP).
-
-![Alert Config](./05-alerts/screenshots/alert-settings_1.png)
-![Alert Config](./05-alerts/screenshots/alert-settings_2.png)
-![Triggered Alert](./05-alerts/screenshots/triggered-alerts.png)
-
----
 
 ## 📊 Dashboard
 Built in Dashboard Studio with panels for:
@@ -104,7 +93,7 @@ Built in Dashboard Studio with panels for:
 - Success vs. failure ratio
 - Brute-force-then-breach IPs
 
-![Dashboard](./06-dashboards/screenshots/full-dashboard.png)
+![Dashboard](./06-dashboards/screenshots/full-dashboard.jpeg)
 
 ---
 
@@ -132,3 +121,4 @@ Built in Dashboard Studio with panels for:
 
 ---
 
+## 🔗 Related Projects
