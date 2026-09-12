@@ -37,9 +37,8 @@ Simulate a real-world SOC analyst workflow: ingest raw SSH authentication logs i
 | [`02-add-data`](./02-add-data) | Data onboarding process, index setup, field verification |
 | [`03-failed-logins`](./03-failed-logins) | Failed login detection queries & results |
 | [`04-brute-force`](./04-brute-force) | Brute-force & brute-force-then-breach detection logic |
-| [`05-alerts`](./05-alerts) | Alert configuration & triggered alert evidence |
-| [`06-dashboards`](./06-dashboards) | Exported dashboard source (JSON) & screenshots |
-| [`07-spl-queries`](./07-spl-queries) | Full SPL query reference used throughout the project |
+| [`05-dashboards`](./05-dashboards) | Exported dashboard source (JSON) & screenshots |
+| [`06-spl-queries`](./06-spl-queries) | Full SPL query reference used throughout the project |
 
 ---
 
@@ -120,5 +119,3 @@ Built in Dashboard Studio with panels for:
 - Widen the time range window in the source data to better test time-based detections
 
 ---
-
-## 🔗 Related Projects
