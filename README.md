@@ -92,7 +92,7 @@ Built in Dashboard Studio with panels for:
 - Success vs. failure ratio
 - Brute-force-then-breach IPs
 
-![Dashboard](./06-dashboards/screenshots/full-dashboard.jpeg)
+![Dashboard](./05-dashboards/screenshots/full-dashboard.jpeg)
 
 ---
 
