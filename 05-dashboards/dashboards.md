@@ -19,7 +19,7 @@ Built a Splunk dashboard (`SSH Brute Force Detection Dashboard`) to visualize th
 ## Screenshot
 
 **Full dashboard view**
-![Dashboard](./screenshots/full-dashboard.png)
+![Dashboard](./screenshots/full-dashboard.jpeg)
 
 ## Notes
 - Dashboard source (XML/JSON) was not exported — the panel SPL above fully reproduces the dashboard if rebuilt from scratch.
