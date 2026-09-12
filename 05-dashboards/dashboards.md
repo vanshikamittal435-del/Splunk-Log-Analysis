@@ -1,4 +1,4 @@
-# 06 — Dashboards
+# 05 — Dashboards
 
 ## Overview
 Built a Splunk dashboard (`SSH Brute Force Detection Dashboard`) to visualize the detection logic developed in the earlier stages of this project, bringing the failed-login, brute-force, and event-type findings into one view.
@@ -10,11 +10,11 @@ Built a Splunk dashboard (`SSH Brute Force Detection Dashboard`) to visualize th
 
 | Panel | SPL | Visualization |
 |---|---|---|
-| Failed logins by IP | `source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login" \| stats count as total_attempts by id.orig_h \| where total_attempts >= 5 \| sort -total_attempts` | Bar chart |
-| Top targeted usernames | `source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login" \| top limit=10 username` | Bar chart |
-| Event type breakdown | `source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" \| stats count by event_type` | Pie chart |
-| Failed logins over time | `source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login" \| timechart count` | Line/area chart |
-| Top offending IP (single value) | `source="ssh_logs_new.json" host="Mahhyya" sourcetype="_json" event_type="Failed SSH Login" \| stats count as total_attempts by id.orig_h \| sort -total_attempts \| head 1` | Single value |
+| Failed logins by IP | `source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login" \| stats count as total_attempts by id.orig_h \| where total_attempts >= 5 \| sort -total_attempts` | Bar chart |
+| Top targeted usernames | `source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login" \| top limit=10 username` | Bar chart |
+| Event type breakdown | `source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" \| stats count by event_type` | Pie chart |
+| Failed logins over time | `source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login" \| timechart count` | Line/area chart |
+| Top offending IP (single value) | `source="ssh_logs_new.json" host="vanshika_4245" sourcetype="_json" event_type="Failed SSH Login" \| stats count as total_attempts by id.orig_h \| sort -total_attempts \| head 1` | Single value |
 
 ## Screenshot
 
